@@ -1,0 +1,973 @@
+ 
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080b1b">
+    <meta name="description" content="Saifi Links — all social platforms, content channels and communities in one place.">
+
+    <title>Saifi Socials | Connect Everywhere</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23080b1b'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%94%97%3C/text%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #080b1b;
+            --surface: rgba(17, 24, 53, 0.76);
+            --surface-hover: rgba(31, 41, 82, 0.88);
+            --text: #f5f7ff;
+            --muted: #a9b4d3;
+            --border: rgba(145, 164, 255, 0.19);
+            --primary: #8b5cf6;
+            --secondary: #22d3ee;
+            --glow: rgba(124, 58, 237, 0.20);
+            --shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
+        }
+
+        [data-theme="light"] {
+            color-scheme: light;
+            --bg: #f3f5ff;
+            --surface: rgba(255, 255, 255, 0.78);
+            --surface-hover: rgba(255, 255, 255, 0.98);
+            --text: #17203b;
+            --muted: #626e8b;
+            --border: rgba(99, 102, 241, 0.20);
+            --primary: #6d28d9;
+            --secondary: #0891b2;
+            --glow: rgba(124, 58, 237, 0.12);
+            --shadow: 0 18px 55px rgba(40, 48, 100, 0.10);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 25px;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            transition: background .35s ease, color .35s ease;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        ::selection {
+            color: white;
+            background: #7c3aed;
+        }
+
+        /* Animated background */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -2;
+            background:
+                radial-gradient(ellipse at 15% 10%, var(--glow), transparent 40%),
+                radial-gradient(ellipse at 85% 85%, rgba(6, 182, 212, .10), transparent 38%),
+                var(--bg);
+            transition: background .35s ease;
+        }
+
+        .background::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .19;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, black, transparent 90%);
+        }
+
+        .orb {
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            filter: blur(85px);
+            opacity: .35;
+            animation: float 12s ease-in-out infinite alternate;
+        }
+
+        .orb-one {
+            top: -160px;
+            left: -100px;
+            background: #6d28d9;
+        }
+
+        .orb-two {
+            right: -150px;
+            top: 35%;
+            background: #0891b2;
+            animation-delay: -5s;
+        }
+
+        .orb-three {
+            bottom: -200px;
+            left: 30%;
+            background: #9333ea;
+            animation-delay: -8s;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(55px, 65px) scale(1.18); }
+        }
+
+        /* Layout */
+
+        .container {
+            width: min(1100px, 100% - 40px);
+            margin-inline: auto;
+            padding: 34px 0 22px;
+        }
+
+        /* Header */
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 13px 20px;
+            margin-bottom: 62px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--surface);
+            backdrop-filter: blur(18px);
+            box-shadow: var(--shadow);
+            animation: slideDown .7s ease both;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+            white-space: nowrap;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            color: white;
+            background: linear-gradient(135deg, #06b6d4, #7c3aed);
+            box-shadow: 0 0 24px rgba(124, 58, 237, .30);
+        }
+
+        .brand span span {
+            color: var(--primary);
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 105px;
+            padding: 11px 15px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            color: var(--text);
+            background: var(--surface-hover);
+            cursor: pointer;
+            transition: transform .25s, border-color .25s;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .theme-toggle i {
+            font-size: 17px;
+        }
+
+        /* Hero */
+
+        .hero {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 54px;
+            animation: fadeUp .9s ease both;
+        }
+
+        .hero-logo {
+            width: 112px;
+            height: 112px;
+            margin: 0 auto 24px;
+            display: grid;
+            place-items: center;
+            font-size: 43px;
+            color: white;
+            border: 2px solid transparent;
+            border-radius: 35px;
+            background:
+                linear-gradient(var(--bg), var(--bg)) padding-box,
+                linear-gradient(135deg, #22d3ee, #8b5cf6, #ec4899) border-box;
+            box-shadow:
+                0 0 25px rgba(34, 211, 238, .16),
+                0 0 55px rgba(139, 92, 246, .17);
+            animation: logoPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: var(--surface);
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow i {
+            color: var(--secondary);
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 68px);
+            line-height: 1.15;
+            letter-spacing: -2.5px;
+            font-weight: 800;
+        }
+
+        .gradient-text {
+            color: var(--primary);
+            background: linear-gradient(110deg, #22d3ee, #8b5cf6 55%, #ec4899);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero > p {
+            max-width: 580px;
+            margin: 17px auto 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .hero-note {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hero-note i {
+            color: var(--primary);
+        }
+
+        /* Social cards */
+
+        .cards {
+            display: grid;
+            gap: 24px;
+        }
+
+        .card {
+            --card-accent: #8b5cf6;
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(210px, .8fr) 1.5fr;
+            align-items: center;
+            gap: 28px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            overflow: hidden;
+            background: var(--surface);
+            backdrop-filter: blur(18px);
+            box-shadow: var(--shadow);
+            isolation: isolate;
+            transition: border-color .3s, transform .3s, background .3s;
+            animation: fadeUp .75s ease both;
+        }
+
+        .card:nth-child(2) { --card-accent: #14b8a6; animation-delay: .1s; }
+        .card:nth-child(3) { --card-accent: #a78bfa; animation-delay: .2s; }
+        .card:nth-child(4) { --card-accent: #f59e0b; animation-delay: .3s; }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 220px;
+            height: 220px;
+            top: -160px;
+            right: -90px;
+            border-radius: 50%;
+            background: var(--card-accent);
+            filter: blur(80px);
+            opacity: .16;
+            transition: opacity .3s, transform .4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--card-accent);
+        }
+
+        .card:hover::before {
+            opacity: .32;
+            transform: translate(-35px, 35px);
+        }
+
+        .card-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 17px;
+            min-width: 0;
+        }
+
+        .card-icon {
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            width: 62px;
+            height: 62px;
+            border: 1px solid var(--card-accent);
+            border-radius: 20px;
+            color: var(--card-accent);
+            background: color-mix(in srgb, var(--card-accent) 12%, transparent);
+            font-size: 24px;
+            transition: transform .35s;
+        }
+
+        .card:hover .card-icon {
+            transform: rotate(-7deg) scale(1.06);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .card-info p {
+            margin-top: 9px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 11px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            padding: 13px 12px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: var(--text);
+            background: rgba(128, 128, 128, .035);
+            font-size: 12px;
+            font-weight: 500;
+            transition: transform .25s, border-color .25s, background .25s;
+        }
+
+        .link-btn i {
+            flex-shrink: 0;
+            width: 19px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .link-btn .arrow {
+            margin-left: auto;
+            font-size: 11px;
+            color: var(--muted);
+            transition: transform .25s, color .25s;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--card-accent);
+            background: color-mix(in srgb, var(--card-accent) 10%, transparent);
+        }
+
+        .link-btn:hover .arrow {
+            color: var(--card-accent);
+            transform: translateX(3px);
+        }
+
+        /* Bottom profile cards */
+
+        .bottom {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .footer-card {
+            --footer-accent: #06b6d4;
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform .3s, border-color .3s;
+            animation: fadeUp .7s ease both;
+        }
+
+        .footer-card:last-child {
+            --footer-accent: #c084fc;
+            animation-delay: .12s;
+        }
+
+        .footer-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--footer-accent);
+        }
+
+        .footer-icon {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 55px;
+            height: 55px;
+            border-radius: 17px;
+            background: color-mix(in srgb, var(--footer-accent) 13%, transparent);
+            color: var(--footer-accent);
+            font-size: 25px;
+        }
+
+        .footer-card h3 {
+            font-size: 16px;
+        }
+
+        .footer-card p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer-arrow {
+            margin-left: auto;
+            color: var(--footer-accent);
+        }
+
+        footer {
+            margin-top: 42px;
+            padding: 23px 0 10px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        footer i {
+            color: #a78bfa;
+            margin-right: 7px;
+        }
+
+        .back-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 10;
+            display: grid;
+            place-items: center;
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            color: white;
+            background: linear-gradient(135deg, #0891b2, #7c3aed);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: .3s;
+        }
+
+        .back-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tablet */
+
+        @media (max-width: 900px) {
+            .card {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding: 25px;
+            }
+
+            .link-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 560px) {
+            .container {
+                width: calc(100% - 28px);
+                padding-top: 17px;
+            }
+
+            .topbar {
+                margin-bottom: 43px;
+                padding: 10px 12px;
+                border-radius: 18px;
+            }
+
+            .brand {
+                gap: 8px;
+                font-size: 18px;
+            }
+
+            .brand-icon {
+                width: 37px;
+                height: 37px;
+                border-radius: 12px;
+            }
+
+            .theme-toggle {
+                min-width: 43px;
+                width: 43px;
+                height: 43px;
+                padding: 0;
+            }
+
+            .theme-toggle span {
+                display: none;
+            }
+
+            .hero {
+                margin-bottom: 38px;
+            }
+
+            .hero-logo {
+                width: 88px;
+                height: 88px;
+                border-radius: 28px;
+                font-size: 34px;
+                margin-bottom: 22px;
+            }
+
+            .hero h1 {
+                font-size: clamp(36px, 10vw, 49px);
+                letter-spacing: -1.8px;
+            }
+
+            .hero > p {
+                font-size: 13px;
+                line-height: 1.85;
+            }
+
+            .eyebrow {
+                font-size: 10px;
+                letter-spacing: .8px;
+            }
+
+            .hero-note {
+                font-size: 11px;
+                gap: 7px;
+            }
+
+            .cards {
+                gap: 17px;
+            }
+
+            .card {
+                padding: 20px 16px;
+                border-radius: 21px;
+                gap: 21px;
+            }
+
+            .card-info {
+                gap: 13px;
+            }
+
+            .card-icon {
+                width: 49px;
+                height: 49px;
+                border-radius: 15px;
+                font-size: 20px;
+            }
+
+            .card h2 {
+                font-size: 17px;
+            }
+
+            .card-info p {
+                font-size: 12px;
+                line-height: 1.8;
+            }
+
+            .link-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 9px;
+            }
+
+            .link-btn {
+                padding: 12px 9px;
+                gap: 8px;
+                font-size: 11px;
+                border-radius: 12px;
+            }
+
+            .link-btn i {
+                font-size: 16px;
+            }
+
+            .bottom {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .footer-card {
+                padding: 19px;
+                border-radius: 19px;
+            }
+
+            footer {
+                margin-top: 32px;
+                font-size: 11px;
+            }
+
+            .back-top {
+                right: 13px;
+                bottom: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background" aria-hidden="true">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+    </div>
+
+    <main class="container">
+
+        <!-- Header -->
+        <header class="topbar">
+            <a href="#" class="brand" aria-label="Saifi Links home">
+                <span class="brand-icon"><i class="fa-solid fa-link"></i></span>
+                <span>SAIFI  <span> SOCIALS</span></span>
+            </a>
+
+            <button class="theme-toggle" id="themeToggle"
+                type="button" aria-label="Switch to light mode">
+                <i class="fa-solid fa-sun" id="themeIcon"></i>
+                <span id="themeLabel">Light mode</span>
+            </button>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-logo">
+                <i class="fa-solid fa-link"></i>
+            </div>
+
+            <div class="eyebrow">
+                <i class="fa-solid fa-circle-check"></i>
+                One place. Every platform.
+            </div>
+
+            <h1>SAIFI  <span class="gradient-text">SOCIALS</span></h1>
+
+            <p>
+                All my social platforms and communities in one place.
+                Discover my content, explore my channels, and stay connected.
+            </p>
+
+            <div class="hero-note">
+                <i class="fa-solid fa-bolt"></i>
+                Connect <span>•</span> Follow <span>•</span> Be Part of Something Bigger
+            </div>
+        </section>
+
+        <!-- Social profiles -->
+        <section class="cards" aria-label="Social media channels">
+
+            <!-- 1: Saifullah Khan Updates -->
+            <article class="card">
+                <div class="card-info">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div>
+                        <h2>Saifullah Khan Updates</h2>
+                        <p>
+                            Daily updates, social issues, tech updates, science,
+                            space, showbiz, stories, health, discoveries and world records.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="link-grid">
+                    <a class="link-btn" href="https://www.instagram.com/saifullahkhanupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.tiktok.com/@saifullahkhanupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> TikTok <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.youtube.com/@SaifullahKhanUpdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.facebook.com/saifullahkhanupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.threads.com/@saifullahkhanupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-threads"></i> Threads <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://x.com/saifiupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i> X <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://whatsapp.com/channel/0029VavSuw19RZAcVv0OjS1D" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                </div>
+            </article>
+
+            <!-- 2: Saifi Ki Bateen -->
+            <article class="card">
+                <div class="card-info">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h2>Saifi Ki Bateen</h2>
+                        <p>
+                            Islam, self-help, life lessons, quotes, poetries and lines.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="link-grid">
+                    <a class="link-btn" href="https://www.instagram.com/saifikibateen/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.youtube.com/@saifikibateen" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.facebook.com/saifikibateen" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.tiktok.com/@saifullahkhanupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> TikTok <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.threads.com/@saifikibateen" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-threads"></i> Threads <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                </div>
+            </article>
+
+            <!-- 3: Saifi Khan Updates -->
+            <article class="card">
+                <div class="card-info">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <h2>Saifi Khan Updates</h2>
+                        <p>
+                            Educational content covering science, technology,
+                            health, space, and fascinating discoveries.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="link-grid">
+                    <a class="link-btn" href="https://www.instagram.com/saifikhanupdates/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.tiktok.com/@saifikhanupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> TikTok <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.youtube.com/@saifikhanupdates" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                </div>
+            </article>
+
+            <!-- 4: Karachi Ka Banda -->
+            <article class="card">
+                <div class="card-info">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-earth-asia"></i>
+                    </div>
+                    <div>
+                        <h2>Karachi Ka Banda</h2>
+                        <p>
+                            Explore strange, fascinating, emotional, and
+                            interesting events from around the world.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="link-grid">
+                    <a class="link-btn" href="https://www.youtube.com/@KarachiKaBanda" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.facebook.com/karachikabanda" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.instagram.com/karachikabandaofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.tiktok.com/@karachikabandaofficial" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> TikTok <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                    <a class="link-btn" href="https://www.threads.com/@karachikabandaofficial" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-threads"></i> Threads <i class="fa-solid fa-arrow-up-right-from-square arrow"></i></a>
+                </div>
+            </article>
+        </section>
+
+        <!-- Professional profiles -->
+        <section class="bottom" aria-label="Professional profiles">
+            <a class="footer-card" href="https://pk.linkedin.com/in/saifullahkhan313" target="_blank" rel="noopener noreferrer">
+                <div class="footer-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div>
+                    <h3>LinkedIn</h3>
+                    <p>Professional Profile</p>
+                </div>
+                <i class="fa-solid fa-arrow-right footer-arrow"></i>
+            </a>
+
+            <a class="footer-card" href="https://github.com/saifullahkhan313" target="_blank" rel="noopener noreferrer">
+                <div class="footer-icon"><i class="fa-brands fa-github"></i></div>
+                <div>
+                    <h3>GitHub</h3>
+                    <p>Projects &amp; Code</p>
+                </div>
+                <i class="fa-solid fa-arrow-right footer-arrow"></i>
+            </a>
+        </section>
+
+        <footer>
+            <!-- <i class="fa-solid fa-heart"></i> -->
+            © <span id="year">2026</span> Saifi Links
+            <span> &nbsp; | &nbsp; Developed by Saifullah Khan</span>
+        </footer>
+    </main>
+
+    <a href="#" class="back-top" id="backTop" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const root = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeLabel = document.getElementById('themeLabel');
+        const backTop = document.getElementById('backTop');
+
+        // Restore saved theme, or use dark mode by default.
+        let savedTheme = null;
+
+        try {
+            savedTheme = localStorage.getItem('saifi-links-theme');
+        } catch (error) {
+            // The site still works if browser storage is unavailable.
+        }
+
+        root.dataset.theme =
+            savedTheme === 'light' || savedTheme === 'dark'
+                ? savedTheme
+                : 'dark';
+
+        function updateThemeButton() {
+            const isDark = root.dataset.theme === 'dark';
+
+            themeIcon.className = isDark
+                ? 'fa-solid fa-sun'
+                : 'fa-solid fa-moon';
+
+            themeLabel.textContent = isDark
+                ? 'Light mode'
+                : 'Dark mode';
+
+            themeToggle.setAttribute(
+                'aria-label',
+                isDark ? 'Switch to light mode' : 'Switch to dark mode'
+            );
+
+            document.querySelector('meta[name="theme-color"]')
+                .setAttribute('content', isDark ? '#080b1b' : '#f3f5ff');
+        }
+
+        updateThemeButton();
+
+        themeToggle.addEventListener('click', () => {
+            root.dataset.theme =
+                root.dataset.theme === 'dark' ? 'light' : 'dark';
+
+            try {
+                localStorage.setItem(
+                    'saifi-links-theme',
+                    root.dataset.theme
+                );
+            } catch (error) {
+                // Theme switching still works for this page session.
+            }
+
+            updateThemeButton();
+        });
+
+        // Automatically update the copyright year.
+        document.getElementById('year').textContent =
+            new Date().getFullYear();
+
+        // Show back-to-top button after scrolling.
+        window.addEventListener('scroll', () => {
+            backTop.classList.toggle('visible', window.scrollY > 350);
+        }, { passive: true });
+    </script>
+</body>
+</html>
